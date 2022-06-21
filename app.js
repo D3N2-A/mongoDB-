@@ -35,6 +35,8 @@ const Chiron = new car({
   horsepower: 1600,
 });
 
+// Chiron.save();
+
 // car.insertMany([GT, Supra, Chiron], function (err) {
 //   if (err) {
 //     console.log(err);
@@ -60,10 +62,33 @@ const Chiron = new car({
 //   }
 // });
 
-car.deleteOne({ _id: 3 }, (err) => {
+// car.deleteOne({ _id: 3 }, (err) => {
+//   if (err) {
+//     console.log(err);
+//   } else {
+//     console.log("Successfully deleted document");
+//   }
+// });
+
+const peopleSchema = new mongoose.Schema({
+  _id: { type: Number, required: true },
+  name: String,
+  age: Number,
+  favoriteCar: carSchema,
+});
+
+const person = mongoose.model("person", peopleSchema);
+
+const John = new person({
+  _id: 1,
+  name: "John",
+  age: 32,
+});
+
+person.updateOne({ id: 1 }, { favoriteCar: Supra }, (err) => {
   if (err) {
     console.log(err);
   } else {
-    console.log("Successfully deleted document");
+    console.log("update success");
   }
 });
