@@ -43,11 +43,19 @@ const Chiron = new car({
 //   }
 // });
 
-car.find(function (err, result) {
+// car.find(function (err, result) {
+//   if (err) {
+//     console.log(err);
+//   } else {
+//     mongoose.connection.close();
+//     result.forEach((element) => console.log(element.name));
+//   }
+// });
+
+car.updateOne({ _id: 3 }, { horsepower: 1500 }, (err) => {
   if (err) {
     console.log(err);
   } else {
-    mongoose.connection.close();
-    result.forEach((element) => console.log(element.name));
+    console.log("Sucessfully updated document");
   }
 });
