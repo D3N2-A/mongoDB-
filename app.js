@@ -52,10 +52,18 @@ const Chiron = new car({
 //   }
 // });
 
-car.updateOne({ _id: 3 }, { horsepower: 1500 }, (err) => {
+// car.updateOne({ _id: 3 }, { horsepower: 1500 }, (err) => {
+//   if (err) {
+//     console.log(err);
+//   } else {
+//     console.log("Sucessfully updated document");
+//   }
+// });
+
+car.deleteOne({ _id: 3 }, (err) => {
   if (err) {
     console.log(err);
   } else {
-    console.log("Sucessfully updated document");
+    console.log("Successfully deleted document");
   }
 });
