@@ -3,8 +3,12 @@ mongoose.connect("mongodb://localhost:27017/carsDB");
 
 const carSchema = new mongoose.Schema({
   _id: Number,
-  name: String,
-  rating: Number,
+  name: { type: String, required: [true, "Why no Name?"] },
+  rating: {
+    type: Number,
+    min: 1,
+    max: 10,
+  },
   horsepower: Number,
 });
 
@@ -43,6 +47,7 @@ car.find(function (err, result) {
   if (err) {
     console.log(err);
   } else {
+    mongoose.connection.close();
     result.forEach((element) => console.log(element.name));
   }
 });
