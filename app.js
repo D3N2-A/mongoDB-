@@ -8,33 +8,41 @@ const carSchema = new mongoose.Schema({
   horsepower: Number,
 });
 
-const Car = mongoose.model("car", carSchema);
+const car = mongoose.model("car", carSchema);
 
-const GT = new Car({
+const GT = new car({
   _id: 1,
   name: "GT",
   rating: 8.5,
   horsepower: 1200,
 });
 
-const Supra = new Car({
+const Supra = new car({
   _id: 2,
   name: "Supra",
   rating: 9.5,
   horsepower: 1450,
 });
 
-const Chiron = new Car({
+const Chiron = new car({
   _id: 3,
   name: "Chiron",
   rating: 7.5,
   horsepower: 1600,
 });
 
-Car.insertMany([GT, Supra, Chiron], function (err) {
+// car.insertMany([GT, Supra, Chiron], function (err) {
+//   if (err) {
+//     console.log(err);
+//   } else {
+//     console.log("Saved into collection");
+//   }
+// });
+
+car.find(function (err, result) {
   if (err) {
     console.log(err);
   } else {
-    console.log("Saved into collection");
+    result.forEach((element) => console.log(element.name));
   }
 });
