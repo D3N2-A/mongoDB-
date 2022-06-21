@@ -17,18 +17,24 @@ const GT = new Car({
   horsepower: 1200,
 });
 
-const peopleSchema = new mongoose.Schema({
-  _id: Number,
-  name: String,
-  age: Number,
+const Supra = new Car({
+  _id: 2,
+  name: "Supra",
+  rating: 9.5,
+  horsepower: 1450,
 });
 
-const People = mongoose.model("people", peopleSchema);
-
-const Nigga = new People({
-  _id: 1,
-  name: "Nigga Singh",
-  age: 19,
+const Chiron = new Car({
+  _id: 3,
+  name: "Chiron",
+  rating: 7.5,
+  horsepower: 1600,
 });
 
-Nigga.save();
+Car.insertMany([GT, Supra, Chiron], function (err) {
+  if (err) {
+    console.log(err);
+  } else {
+    console.log("Saved into collection");
+  }
+});
